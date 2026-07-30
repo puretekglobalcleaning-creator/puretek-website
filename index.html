@@ -189,10 +189,10 @@
   <nav class="wrap">
     <a href="#top" class="nav-logo">
       <img src="assets/logo-transparent-cropped.png" alt="Puretek Global logo">
-      <span>Puretek Global</span>
+      <span>Puretek Global Cleaning</span>
     </a>
     <div class="nav-right">
-      <a href="tel:+13464126010" class="nav-phone">346-412-6010</a>
+      <a href="tel:+18323801738" class="nav-phone">832-380-1738</a>
       <a href="#quote" class="btn btn-gold nav-cta">Get Instant Quote</a>
     </div>
   </nav>
@@ -207,7 +207,7 @@
     <p class="sub">Give yourself back your weekend. Whether it's a weekly refresh, a move-out deep clean, or getting your Airbnb guest-ready between bookings, our team handles it with the attention to detail that keeps clients with us for years.</p>
     <div class="hero-ctas">
       <a href="#quote" class="btn btn-gold">See Your Price in 30 Seconds</a>
-      <a href="tel:+13464126010" class="btn btn-outline">Call or Text 346-412-6010</a>
+      <a href="tel:+18323801738" class="btn btn-outline">Call or Text 832-380-1738</a>
     </div>
   </div>
 </section>
@@ -281,9 +281,9 @@
           <option value="0.0909" selected>Biweekly Maintenance</option>
           <option value="0.1010">Triweekly Maintenance</option>
           <option value="0.1111">Monthly Maintenance</option>
-          <option value="0.1313">Initial / Move-In Clean</option>
-          <option value="0.1717">Move-Out Clean</option>
-          <option value="0.1919">Post-Construction Clean</option>
+          <option value="0.1515">Initial / Move-In Clean</option>
+          <option value="0.2020">Move-Out Clean</option>
+          <option value="0.2424">Post-Construction Clean</option>
         </select>
 
         <div class="addon-note">
@@ -332,8 +332,8 @@
       <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814" form_url="https://clienthub.getjobber.com/client_hubs/b8202474-ba1c-4235-9d13-b55bb5b139ba/public/work_request/embedded_work_request_form?form_id=1654814"></script>
 
       <div class="request-ctas">
-        <a href="tel:+13464126010" class="btn btn-outline dark">Call 346-412-6010</a>
-        <a href="sms:+13464126010" class="btn btn-outline dark">Text Us</a>
+        <a href="tel:+18323801738" class="btn btn-outline dark">Call 832-380-1738</a>
+        <a href="sms:+18323801738" class="btn btn-outline dark">Text Us</a>
       </div>
     </div>
   </div>
@@ -343,7 +343,7 @@
   <div class="wrap">
     <img src="assets/logo-transparent-cropped.png" alt="Puretek Global logo">
     <div class="foot-name">Puretek Global LLC</div>
-    <div class="foot-line"><a href="tel:+13464126010">346-412-6010</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
+    <div class="foot-line"><a href="tel:+18323801738">832-380-1738</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
     <div class="foot-line">Serving [Your Service Area] — edit this line in index.html</div>
     <div class="foot-copy">&copy; 2026 Puretek Global LLC. All rights reserved.</div>
   </div>
@@ -352,19 +352,26 @@
 <script>
   const rates = {
     "0.0808": "Weekly", "0.0909": "Biweekly", "0.1010": "Triweekly",
-    "0.1111": "Monthly", "0.1313": "Initial/Move-In", "0.1717": "Move-Out", "0.1919": "Post-Construction"
+    "0.1111": "Monthly", "0.1515": "Initial/Move-In", "0.2020": "Move-Out", "0.2424": "Post-Construction"
   };
 
   function fmt(n) {
-    return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
 
-  const MINIMUM = 150;
-  const INITIAL_RATE = 0.1313;
+  const MINIMUMS = {
+    "0.0808": 150, "0.0909": 150, "0.1010": 150,
+    "0.1111": 150, "0.1515": 150, "0.2020": 250, "0.2424": 150
+  };
+  const INITIAL_RATE = 0.1515;
   const RECURRING_RATES = ["0.0808", "0.0909", "0.1010", "0.1111"];
 
-  function priceFor(sqft, rate) {
-    return Math.max(sqft * rate, MINIMUM);
+  function roundUpToFive(n) {
+    return Math.ceil(n / 5) * 5;
+  }
+
+  function priceFor(sqft, rate, minimum) {
+    return roundUpToFive(Math.max(sqft * rate, minimum));
   }
 
   function calculate() {
@@ -376,8 +383,8 @@
     const recurringLine = document.getElementById('recurringLine');
 
     if (isRecurring) {
-      const firstClean = priceFor(sqft, INITIAL_RATE);
-      const recurringPrice = priceFor(sqft, rate);
+      const firstClean = priceFor(sqft, INITIAL_RATE, MINIMUMS["0.1515"]);
+      const recurringPrice = priceFor(sqft, rate, MINIMUMS[rateKey]);
 
       document.getElementById('quoteLabel').textContent = 'First Clean (Initial Deep Clean)';
       document.getElementById('quoteTotal').textContent = fmt(firstClean);
@@ -386,7 +393,7 @@
       document.getElementById('quoteBreakdown').innerHTML =
         `<div><span>${rates[rateKey]} Maintenance (${sqft} sq ft)</span></div>`;
     } else {
-      const total = priceFor(sqft, rate);
+      const total = priceFor(sqft, rate, MINIMUMS[rateKey]);
       document.getElementById('quoteLabel').textContent = 'Your Instant Estimate';
       document.getElementById('quoteTotal').textContent = fmt(total);
       recurringLine.style.display = 'none';
