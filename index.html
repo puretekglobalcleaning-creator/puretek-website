@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puretek Global Cleaning | Real Cleaning. Real Results.</title>
+<meta name="description" content="Puretek Global Cleaning — residential, commercial, Airbnb, move-in/move-out, and post-construction cleaning. Get an instant quote in seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A227;
+    --gold-light: #E8C878;
+    --gold-pale: #F8E078;
+    --gold-dark: #B08830;
+    --black: #0B0B0C;
+    --black-soft: #17171A;
+    --cream: #FFFDF7;
+    --gray: #6B6B66;
+    --line: #EAE7DD;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--black);
+    background: #fff;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 80px 0; }
+  .eyebrow {
+    color: var(--gold-dark); font-size: 19px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 800; margin-bottom: 14px;
+  }
+  .quote-section .eyebrow { color: var(--gold-light); }
+  .eyebrow-headline {
+    font-family: 'Inter', sans-serif; color: var(--gold-light); font-size: clamp(32px, 4.5vw, 48px);
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 800; margin-bottom: 14px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 15px 30px; border-radius: 8px; font-weight: 650; font-size: 15px;
+    cursor: pointer; border: none; transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 45%, var(--gold-dark) 100%);
+    color: var(--black);
+  }
+  .btn-outline {
+    background: transparent; border: 2px solid var(--gold-dark); color: var(--gold-pale);
+    background-clip: padding-box;
+  }
+  .btn-outline.dark { color: var(--black); border-color: var(--black); }
+  .btn-block { width: 100%; }
+
+  /* NAV */
+  header {
+    position: sticky; top: 0; z-index: 100; background: var(--black);
+    border-bottom: 1px solid rgba(201,162,39,0.25);
+  }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { height: 54px; width: auto; }
+  .nav-logo span { color: #F3F1E9; font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: 0.02em; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .nav-phone { color: var(--gold-light); font-weight: 600; font-size: 14.5px; white-space: nowrap; }
+  .nav-cta { padding: 10px 18px; font-size: 13.5px; }
+  @media (max-width: 640px) { .nav-phone { display: none; } }
+
+  /* HERO */
+  .hero {
+    background: radial-gradient(ellipse at 50% 0%, #1a1a1c 0%, var(--black) 60%);
+    color: #fff; text-align: center; padding: 36px 0 34px;
+  }
+  .hero-logo { width: 300px; margin: 0 auto 14px; }
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 56px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 10px;
+  }
+  .hero .tagline {
+    color: var(--gold-light); font-size: 19px; font-style: italic; font-family: 'Playfair Display', serif;
+    margin-bottom: 16px;
+  }
+  .hero p.sub {
+    max-width: 620px; margin: 0 auto 22px; color: #C8C7C0; font-size: 16.5px;
+  }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* TRUST BAR */
+  .trust-bar { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px 0; }
+  .trust-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; text-align: center;
+  }
+  .trust-grid div { font-size: 13.5px; font-weight: 600; color: var(--black-soft); }
+  @media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* SERVICES */
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 12px; }
+  .section-head p { color: var(--gray); font-size: 16px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+  .service-card {
+    border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; background: #fff;
+    text-align: center; display: flex; flex-direction: column; align-items: center;
+  }
+  .service-card .icon {
+    width: 42px; height: 42px; border-radius: 10px; background: var(--black);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--gold);
+    font-size: 19px; font-weight: 700;
+  }
+  .service-card h3 { font-size: 17px; margin-bottom: 8px; }
+  .service-card p { color: var(--gray); font-size: 14px; }
+
+  /* QUOTE CALCULATOR */
+  .quote-section { background: var(--black); color: #fff; }
+  .quote-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+  @media (max-width: 860px) { .quote-wrap { grid-template-columns: 1fr; } }
+  .quote-section .section-head h2 { color: #fff; }
+  .quote-section .section-head p { color: #B4B3A8; }
+  .quote-form label {
+    display: block; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: #B4B3A8; margin-bottom: 6px; margin-top: 16px; font-weight: 600;
+  }
+  .quote-form label:first-child { margin-top: 0; }
+  .quote-form input, .quote-form select {
+    width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #33332E;
+    background: #1C1C1E; color: #fff; font-size: 15px; font-family: inherit;
+  }
+  .addon-note {
+    margin-top: 26px; padding: 16px 18px; border: 1px solid #2A2A26; border-radius: 10px;
+    background: #17171A; color: #B4B3A8; font-size: 13.5px; line-height: 1.6;
+  }
+  .addon-note strong { color: var(--gold-light); }
+  .quote-result {
+    background: linear-gradient(160deg, #17171A, #0B0B0C); border: 1.5px solid var(--gold);
+    border-radius: 16px; padding: 32px; text-align: center; position: sticky; top: 90px;
+  }
+  .quote-result .label { color: #B4B3A8; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .quote-result .amount { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--gold-light); font-weight: 700; }
+  .quote-result .amount-secondary { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--gold-light); font-weight: 700; }
+  .quote-result .breakdown { margin: 20px 0; text-align: left; font-size: 13.5px; color: #C8C7C0; border-top: 1px solid #2A2A26; padding-top: 16px; }
+  .quote-result .breakdown div { display: flex; justify-content: space-between; padding: 5px 0; }
+  .quote-result .disclaimer { font-size: 12px; color: #7A7A73; margin-top: 18px; line-height: 1.5; }
+
+  /* GALLERY */
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .gallery-grid-2 { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin: 0 auto; }
+  @media (max-width: 760px) { .gallery-grid { grid-template-columns: 1fr; } }
+  .gallery-item { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-placeholder {
+    aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+    color: #C4C2B6; font-size: 13.5px; text-align: center; padding: 20px; border: 1.5px dashed var(--line);
+  }
+
+  /* REQUEST / BOOK */
+  .request-section { background: var(--cream); }
+  .request-card {
+    max-width: 640px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    padding: 40px; text-align: center;
+  }
+  .request-card h3 { font-size: 22px; margin-bottom: 12px; }
+  .request-card p { color: var(--gray); font-size: 15px; margin-bottom: 24px; }
+  .jobber-embed-slot {
+    border: 1.5px dashed var(--gold); border-radius: 12px; padding: 30px 20px; margin-bottom: 22px;
+    color: var(--gold-dark); font-size: 13.5px; background: #FFFDF3;
+  }
+  .request-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+  /* FOOTER */
+  footer { background: var(--black); color: #B4B3A8; padding: 50px 0 30px; text-align: center; }
+  footer img { height: 60px; margin: 0 auto 16px; }
+  footer .foot-name { color: #fff; font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 6px; }
+  footer .foot-line { font-size: 14px; margin-bottom: 4px; }
+  footer .foot-line a { color: var(--gold-light); }
+  footer .foot-copy { font-size: 12px; color: #6B6B66; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="nav-logo">
+      <img src="assets/logo-transparent-cropped.png" alt="Puretek Global logo">
+      <span>Puretek Global</span>
+    </a>
+    <div class="nav-right">
+      <a href="tel:+13464126010" class="nav-phone">346-412-6010</a>
+      <a href="#quote" class="btn btn-gold nav-cta">Get Instant Quote</a>
+    </div>
+  </nav>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap">
+    <img src="assets/logo-transparent-cropped.png" alt="Puretek Global Cleaning" class="hero-logo">
+    <h1>Puretek Global Cleaning</h1>
+    <div class="tagline">Real Cleaning. Real Results.</div>
+    <p class="sub">Give yourself back your weekend. Whether it's a weekly refresh, a move-out deep clean, or getting your Airbnb guest-ready between bookings, our team handles it with the attention to detail that keeps clients with us for years.</p>
+    <div class="hero-ctas">
+      <a href="#quote" class="btn btn-gold">See Your Price in 30 Seconds</a>
+      <a href="tel:+13464126010" class="btn btn-outline">Call or Text 346-412-6010</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap trust-grid">
+    <div>10+ Years Experience</div>
+    <div>Fully Customized Cleanings</div>
+    <div>Reliable, Proven Reputation</div>
+    <div>Bilingual Communication</div>
+    <div>Satisfaction Guaranteed</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>Whatever the space, we've got it covered</h2>
+      <p>Residential, commercial, or short-term rental — one team, one standard of clean.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">1</div>
+        <h3>Recurring Maintenance</h3>
+        <p>Weekly, biweekly, triweekly, or monthly cleans that keep your home consistently clean — book once, stay worry-free.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">2</div>
+        <h3>Move-In / Move-Out</h3>
+        <p>A deep, top-to-bottom clean so you get your deposit back or hand over a place you're proud of.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">3</div>
+        <h3>Deep Cleanings</h3>
+        <p>The full reset — baseboards, inside appliances, every corner — when it's time to start fresh.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">4</div>
+        <h3>Post-Construction</h3>
+        <p>Dust, debris, and residue cleared out so your newly built or renovated space is ready to live in.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">5</div>
+        <h3>Airbnb Turnovers</h3>
+        <p>Fast, reliable turnovers between guests so every check-in gets a 5-star-clean impression.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">6</div>
+        <h3>Office &amp; Commercial</h3>
+        <p>Flexible scheduling around your business hours, so your space is always client-ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section" id="quote">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="eyebrow-headline">Instant Quote</h2>
+      <p>Real pricing, no games. Enter your details and get an instant estimate — confirmed after a quick walkthrough or a few photos.</p>
+    </div>
+    <div class="quote-wrap">
+      <form class="quote-form" id="quoteForm" onsubmit="return false;">
+        <label for="sqft">Home / Space Square Footage</label>
+        <input type="number" id="sqft" min="0" step="50" value="1500" inputmode="numeric">
+
+        <label for="cleanType">Type of Cleaning</label>
+        <select id="cleanType">
+          <option value="0.0808">Weekly Maintenance</option>
+          <option value="0.0909" selected>Biweekly Maintenance</option>
+          <option value="0.1010">Triweekly Maintenance</option>
+          <option value="0.1111">Monthly Maintenance</option>
+          <option value="0.1313">Initial / Move-In Clean</option>
+          <option value="0.1717">Move-Out Clean</option>
+          <option value="0.1919">Post-Construction Clean</option>
+        </select>
+
+        <div class="addon-note">
+          <strong>Also available, ask us for pricing:</strong> appliance cleaning (fridge &amp; oven), interior &amp; exterior windows, laundry, bed making, baseboards, tub &amp; grout cleaning.
+        </div>
+      </form>
+
+      <div class="quote-result">
+        <div class="label" id="quoteLabel">Your Instant Estimate</div>
+        <div class="amount" id="quoteTotal">$0</div>
+        <div class="recurring-line" id="recurringLine" style="display:none;">
+          <div class="label" style="margin-top:18px;">Then, Ongoing</div>
+          <div class="amount-secondary" id="recurringTotal">$0</div>
+        </div>
+        <div class="breakdown" id="quoteBreakdown"></div>
+        <a href="#request" class="btn btn-gold btn-block">Request This Quote</a>
+        <div class="disclaimer">Estimate based on our standard rates. Final price is confirmed after a quick walkthrough or a few photos of the space — no surprise charges.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Results</div>
+      <h2>See the difference</h2>
+      <p>Real jobs, real spaces. Send over a true before/after pair and we'll drop it right in here.</p>
+    </div>
+    <div class="gallery-grid gallery-grid-2">
+      <div class="gallery-item"><img src="assets/gallery-1.jpg" alt="Puretek Global Cleaning recent work"></div>
+      <div class="gallery-item"><img src="assets/gallery-2.jpg" alt="Puretek Global Cleaning recent work"></div>
+    </div>
+  </div>
+</section>
+
+<section class="request-section" id="request">
+  <div class="wrap">
+    <div class="request-card">
+      <div class="eyebrow">Book Now</div>
+      <h3>Ready to get your confirmed quote?</h3>
+      <p>Fill out the short form below with your contact info and job details — you'll get a confirmed quote by text and email, and can book your cleaning right on the spot.</p>
+
+      <div id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814"></div>
+      <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+      <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814" form_url="https://clienthub.getjobber.com/client_hubs/b8202474-ba1c-4235-9d13-b55bb5b139ba/public/work_request/embedded_work_request_form?form_id=1654814"></script>
+
+      <div class="request-ctas">
+        <a href="tel:+13464126010" class="btn btn-outline dark">Call 346-412-6010</a>
+        <a href="sms:+13464126010" class="btn btn-outline dark">Text Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-transparent-cropped.png" alt="Puretek Global logo">
+    <div class="foot-name">Puretek Global LLC</div>
+    <div class="foot-line"><a href="tel:+13464126010">346-412-6010</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
+    <div class="foot-line">Serving [Your Service Area] — edit this line in index.html</div>
+    <div class="foot-copy">&copy; 2026 Puretek Global LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const rates = {
+    "0.0808": "Weekly", "0.0909": "Biweekly", "0.1010": "Triweekly",
+    "0.1111": "Monthly", "0.1313": "Initial/Move-In", "0.1717": "Move-Out", "0.1919": "Post-Construction"
+  };
+
+  function fmt(n) {
+    return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  const MINIMUM = 150;
+  const INITIAL_RATE = 0.1313;
+  const RECURRING_RATES = ["0.0808", "0.0909", "0.1010", "0.1111"];
+
+  function priceFor(sqft, rate) {
+    return Math.max(sqft * rate, MINIMUM);
+  }
+
+  function calculate() {
+    const sqft = parseFloat(document.getElementById('sqft').value) || 0;
+    const rate = parseFloat(document.getElementById('cleanType').value);
+    const rateKey = rate.toFixed(4);
+    const isRecurring = RECURRING_RATES.includes(rateKey);
+
+    const recurringLine = document.getElementById('recurringLine');
+
+    if (isRecurring) {
+      const firstClean = priceFor(sqft, INITIAL_RATE);
+      const recurringPrice = priceFor(sqft, rate);
+
+      document.getElementById('quoteLabel').textContent = 'First Clean (Initial Deep Clean)';
+      document.getElementById('quoteTotal').textContent = fmt(firstClean);
+      document.getElementById('recurringTotal').textContent = fmt(recurringPrice) + ' / visit';
+      recurringLine.style.display = '';
+      document.getElementById('quoteBreakdown').innerHTML =
+        `<div><span>${rates[rateKey]} Maintenance (${sqft} sq ft)</span></div>`;
+    } else {
+      const total = priceFor(sqft, rate);
+      document.getElementById('quoteLabel').textContent = 'Your Instant Estimate';
+      document.getElementById('quoteTotal').textContent = fmt(total);
+      recurringLine.style.display = 'none';
+      document.getElementById('quoteBreakdown').innerHTML =
+        `<div><span>${rates[rateKey] || ''} (${sqft} sq ft)</span></div>`;
+    }
+  }
+
+  document.getElementById('quoteForm').addEventListener('input', calculate);
+  calculate();
+</script>
+
+</body>
+</html>
