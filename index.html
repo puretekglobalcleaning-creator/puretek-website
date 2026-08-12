@@ -224,13 +224,13 @@
       <input type="number" id="sqft" min="0" step="50" value="1500" inputmode="numeric">
       <label for="cleanType">Type of Cleaning</label>
       <select id="cleanType">
-        <option value="0.0808">Weekly Maintenance</option>
-        <option value="0.0909" selected>Biweekly Maintenance</option>
-        <option value="0.1010">Triweekly Maintenance</option>
-        <option value="0.1111">Monthly Maintenance</option>
-        <option value="0.1515">Initial / Move-In Clean</option>
-        <option value="0.2020">Move-Out Clean</option>
-        <option value="0.2424">Post-Construction Clean</option>
+        <option value="weekly">Weekly Maintenance</option>
+        <option value="biweekly" selected>Biweekly Maintenance</option>
+        <option value="triweekly">Triweekly Maintenance</option>
+        <option value="monthly">Monthly Maintenance</option>
+        <option value="initial">Initial / Move-In Clean</option>
+        <option value="moveout">Move-Out Clean</option>
+        <option value="postconstruction">Post-Construction Clean</option>
       </select>
       <div class="addon-note"><strong>Also available, ask us for pricing:</strong> appliance cleaning (fridge &amp; oven), interior &amp; exterior windows, laundry, bed making, baseboards, tub &amp; grout cleaning.</div>
     </form>
@@ -292,31 +292,37 @@
 <div class="mobile-bar"><a href="tel:+18323801738" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
 </body></html>
 <script>
-  const rates={"0.0808":"Weekly","0.0909":"Biweekly","0.1010":"Triweekly","0.1111":"Monthly","0.1515":"Initial/Move-In","0.2020":"Move-Out","0.2424":"Post-Construction"};
+  // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Floors: $150 all services, $250 move-out.
+  const TYPES={
+    weekly:{label:'Weekly Maintenance',rate:0.08,min:150,recurring:true},
+    biweekly:{label:'Biweekly Maintenance',rate:0.09,min:150,recurring:true},
+    triweekly:{label:'Triweekly Maintenance',rate:0.10,min:150,recurring:true},
+    monthly:{label:'Monthly Maintenance',rate:0.11,min:150,recurring:true},
+    initial:{label:'Initial / Move-In Clean',rate:0.15,min:150},
+    moveout:{label:'Move-Out Clean',rate:0.20,min:250},
+    postconstruction:{label:'Post-Construction Clean',rate:0.24,min:150}
+  };
+  const INITIAL_RATE=0.15, INITIAL_MIN=150;
   function fmt(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:0});}
-  const MINIMUMS={"0.0808":150,"0.0909":150,"0.1010":150,"0.1111":150,"0.1515":150,"0.2020":250,"0.2424":150};
-  const INITIAL_RATE=0.1515;const RECURRING_RATES=["0.0808","0.0909","0.1010","0.1111"];
-  function roundUpToFive(n){return Math.ceil(n/5)*5;}
-  function priceFor(sqft,rate,minimum){return roundUpToFive(Math.max(sqft*rate,minimum));}
+  function priceFor(sqft,rate,minimum){return Math.max(sqft*rate,minimum);}
   function calculate(){
     const sqft=parseFloat(document.getElementById('sqft').value)||0;
-    const rate=parseFloat(document.getElementById('cleanType').value);
-    const rateKey=rate.toFixed(4);const isRecurring=RECURRING_RATES.includes(rateKey);
+    const t=TYPES[document.getElementById('cleanType').value];
     const recurringLine=document.getElementById('recurringLine');
-    if(isRecurring){
-      const firstClean=priceFor(sqft,INITIAL_RATE,MINIMUMS["0.1515"]);
-      const recurringPrice=priceFor(sqft,rate,MINIMUMS[rateKey]);
+    if(t.recurring){
+      const firstClean=priceFor(sqft,INITIAL_RATE,INITIAL_MIN);
+      const recurringPrice=priceFor(sqft,t.rate,t.min);
       document.getElementById('quoteLabel').textContent='First Clean (Initial Deep Clean)';
       document.getElementById('quoteTotal').textContent=fmt(firstClean);
       document.getElementById('recurringTotal').textContent=fmt(recurringPrice)+' / visit';
       recurringLine.style.display='';
-      document.getElementById('quoteBreakdown').innerHTML=`<div><span>${rates[rateKey]} Maintenance (${sqft} sq ft)</span></div>`;
+      document.getElementById('quoteBreakdown').innerHTML=`<div><span>${t.label} (${sqft} sq ft)</span></div>`;
     } else {
-      const total=priceFor(sqft,rate,MINIMUMS[rateKey]);
+      const total=priceFor(sqft,t.rate,t.min);
       document.getElementById('quoteLabel').textContent='Your Instant Estimate';
       document.getElementById('quoteTotal').textContent=fmt(total);
       recurringLine.style.display='none';
-      document.getElementById('quoteBreakdown').innerHTML=`<div><span>${rates[rateKey]||''} (${sqft} sq ft)</span></div>`;
+      document.getElementById('quoteBreakdown').innerHTML=`<div><span>${t.label} (${sqft} sq ft)</span></div>`;
     }
   }
   document.getElementById('quoteForm').addEventListener('input',calculate);calculate();
