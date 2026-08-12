@@ -179,7 +179,7 @@
     <div class="nav-links"><a href="commercial.html" class="link">Commercial</a><a href="post-construction.html" class="link">Post-Construction</a><a href="move-out.html" class="link">Move-Out</a><a href="residential.html" class="link">Residential</a><a href="index.html#area" class="link active">Service Area</a></div>
     <div class="nav-right">
       <a href="tel:+18323801738" class="nav-phone">832-380-1738</a>
-      <a href="index.html#request" class="btn btn-gold nav-cta">Get a Quote</a>
+      <a href="#quote" class="btn btn-gold nav-cta">Get Instant Quote</a>
     </div>
   </nav>
 </header>
@@ -304,7 +304,8 @@
   };
   const INITIAL_RATE=0.15, INITIAL_MIN=150;
   function fmt(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:0});}
-  function priceFor(sqft,rate,minimum){return Math.max(sqft*rate,minimum);}
+  function roundUpToFive(n){return Math.ceil(n/5)*5;}
+  function priceFor(sqft,rate,minimum){return roundUpToFive(Math.max(sqft*rate,minimum));}
   function calculate(){
     const sqft=parseFloat(document.getElementById('sqft').value)||0;
     const t=TYPES[document.getElementById('cleanType').value];
