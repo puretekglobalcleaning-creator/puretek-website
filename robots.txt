@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://puretekglobal.net/sitemap.xml
