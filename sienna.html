@@ -9,6 +9,47 @@
   gtag('js', new Date());
   gtag('config', 'AW-16655749332');
 </script>
+<!-- Puretek conversion tracking — added 2026-08-22. Fires click-to-call and Jobber form-submit conversions. -->
+<script>
+(function () {
+  var CALL = 'AW-16655749332/prJ5CJuyieYcENShioY-';
+  var FORM = 'AW-16655749332/ra9uCM6dyJUbENShioY-';
+  var fired = {};
+
+  function fire(label) {
+    if (fired[label]) return;
+    fired[label] = true;
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': label,
+        'value': 1.0,
+        'currency': 'USD'
+      });
+    }
+  }
+
+  /* 1. Click-to-call and click-to-text, anywhere on the page.
+        We never block the default action — the dialer opens immediately. */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (t && t.nodeType === 3) { t = t.parentNode; }
+    if (!t || !t.closest) { return; }
+    if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL); }
+  }, true);
+
+  /* 2. Jobber embedded work-request form submission.
+        The form lives in a cross-origin iframe, so we listen for its postMessage.
+        Resize/height chatter is ignored; only an explicit submit/success counts. */
+  window.addEventListener('message', function (e) {
+    if (!e.origin || e.origin.indexOf('getjobber.com') === -1) { return; }
+    var s;
+    try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch (err) { return; }
+    if (!s) { return; }
+    if (/height|resize|scroll|iframe/i.test(s)) { return; }
+    if (/submit|success|thank|complete/i.test(s)) { fire(FORM); }
+  }, false);
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cleaning Services in Sienna Plantation, TX | Commercial, Move-Out &amp; House Cleaning | Puretek Global Cleaning</title>
