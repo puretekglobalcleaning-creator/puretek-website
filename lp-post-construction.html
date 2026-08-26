@@ -339,6 +339,22 @@
   <button type="submit">Send Project Details</button>
   <div class="fine">We answer fast. Working against a closing date? Call or text 832-380-1738.</div>
 </form>
+<script>
+(function(){
+  var f=document.querySelector('form.ptg-form'); if(!f) return;
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var b=f.querySelector('button[type=submit]');
+    if(b){b.disabled=true;b.textContent='Sending...';}
+    var done=false;
+    var go=function(){ if(done) return; done=true; window.location.href='/thank-you.html'; };
+    try{
+      fetch(f.action,{method:'POST',mode:'no-cors',body:new FormData(f)}).then(go).catch(go);
+    }catch(e){ go(); }
+    setTimeout(go,4000);
+  });
+})();
+</script>
     <div class="request-ctas">
       <a href="tel:+18323801738" class="btn btn-outline dark">Call 832-380-1738</a>
       <a href="sms:+18323801738" class="btn btn-outline dark">Text Us</a>
