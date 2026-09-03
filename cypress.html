@@ -1,55 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16655749332"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-16655749332');
-</script>
-<!-- Puretek conversion tracking — added 2026-08-22. Fires click-to-call and Jobber form-submit conversions. -->
-<script>
-(function () {
-  var CALL = 'AW-16655749332/prJ5CJuyieYcENShioY-';
-  var FORM = 'AW-16655749332/ra9uCM6dyJUbENShioY-';
-  var fired = {};
-
-  function fire(label) {
-    if (fired[label]) return;
-    fired[label] = true;
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': label,
-        'value': 1.0,
-        'currency': 'USD'
-      });
-    }
-  }
-
-  /* 1. Click-to-call and click-to-text, anywhere on the page.
-        We never block the default action — the dialer opens immediately. */
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (t && t.nodeType === 3) { t = t.parentNode; }
-    if (!t || !t.closest) { return; }
-    if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL); }
-  }, true);
-
-  /* 2. Jobber embedded work-request form submission.
-        The form lives in a cross-origin iframe, so we listen for its postMessage.
-        Resize/height chatter is ignored; only an explicit submit/success counts. */
-  window.addEventListener('message', function (e) {
-    if (!e.origin || e.origin.indexOf('getjobber.com') === -1) { return; }
-    var s;
-    try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch (err) { return; }
-    if (!s) { return; }
-    if (/height|resize|scroll|iframe/i.test(s)) { return; }
-    if (/submit|success|thank|complete/i.test(s)) { fire(FORM); }
-  }, false);
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cleaning Services in Cypress, TX | Commercial, Move-Out &amp; House Cleaning | Puretek Global Cleaning</title>
@@ -247,7 +198,7 @@
 <section><div class="wrap">
   <div class="section-head"><div class="eyebrow">What we do in Cypress</div><h2>One team, every kind of clean</h2><p>From property-management turnovers to a weekly house cleaning, we bring the same standard to every job in Cypress.</p></div>
   <div class="services-grid">
-    <div class="service-card"><div class="icon">1</div><h3>Commercial &amp; Office</h3><p>Offices, retail, and facilities in Cypress kept client-ready, scheduled around your hours.</p><a class="more" href="commercial.html">Learn more →</a></div>
+    <div class="service-card"><div class="icon">1</div><h3>Commercial, Janitorial &amp; Office</h3><p>Offices, retail, medical, and HOA common areas in Cypress kept client-ready, scheduled around your hours.</p><a class="more" href="commercial.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">2</div><h3>Post-Construction</h3><p>New builds and remodels in Cypress cleared of dust and debris, ready to hand over.</p><a class="more" href="post-construction.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">3</div><h3>Move-Out &amp; Turnover</h3><p>Fast, reliable turnovers for Cypress property managers, landlords, and tenants.</p><a class="more" href="move-out.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">4</div><h3>House Cleaning</h3><p>Recurring and deep cleaning that keeps Cypress homes effortlessly fresh.</p><a class="more" href="residential.html">Learn more →</a></div>
@@ -293,11 +244,11 @@
 </section>
 <footer><div class="wrap">
   <img src="assets/logo.png" alt="Puretek Global Cleaning logo">
-  <div class="foot-name">Puretek Global Solutions LLC</div>
+  <div class="foot-name">Puretek Global LLC</div>
   <div class="foot-line"><a href="tel:+18323801738">832-380-1738</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
   <div class="foot-line">Insured &amp; Licensed · Serving Houston, Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land &amp; Richmond</div>
   <div class="foot-links"><a href="commercial.html">Commercial</a><a href="post-construction.html">Post-Construction</a><a href="move-out.html">Move-Out</a><a href="residential.html">Residential</a><a href="index.html#area">Service Area</a></div>
-  <div class="foot-copy">&copy; 2026 Puretek Global Solutions LLC. All rights reserved.</div>
+  <div class="foot-copy">&copy; 2026 Puretek Global LLC. All rights reserved.</div>
 </div></footer>
 <div class="mobile-bar"><a href="tel:+18323801738" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
 </body></html>

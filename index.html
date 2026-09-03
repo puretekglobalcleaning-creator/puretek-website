@@ -1,55 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16655749332"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-16655749332');
-</script>
-<!-- Puretek conversion tracking — added 2026-08-22. Fires click-to-call and Jobber form-submit conversions. -->
-<script>
-(function () {
-  var CALL = 'AW-16655749332/prJ5CJuyieYcENShioY-';
-  var FORM = 'AW-16655749332/ra9uCM6dyJUbENShioY-';
-  var fired = {};
-
-  function fire(label) {
-    if (fired[label]) return;
-    fired[label] = true;
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': label,
-        'value': 1.0,
-        'currency': 'USD'
-      });
-    }
-  }
-
-  /* 1. Click-to-call and click-to-text, anywhere on the page.
-        We never block the default action — the dialer opens immediately. */
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (t && t.nodeType === 3) { t = t.parentNode; }
-    if (!t || !t.closest) { return; }
-    if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL); }
-  }, true);
-
-  /* 2. Jobber embedded work-request form submission.
-        The form lives in a cross-origin iframe, so we listen for its postMessage.
-        Resize/height chatter is ignored; only an explicit submit/success counts. */
-  window.addEventListener('message', function (e) {
-    if (!e.origin || e.origin.indexOf('getjobber.com') === -1) { return; }
-    var s;
-    try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch (err) { return; }
-    if (!s) { return; }
-    if (/height|resize|scroll|iframe/i.test(s)) { return; }
-    if (/submit|success|thank|complete/i.test(s)) { fire(FORM); }
-  }, false);
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puretek Global Cleaning | Commercial, Post-Construction &amp; Move-Out Cleaning in Houston</title>
@@ -220,8 +171,8 @@
   }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CleaningService","name":"Puretek Global Cleaning","image":"https://puretekglobal.net/assets/logo.png","url":"https://puretekglobal.net/","telephone":"+1-832-380-1738","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6666 Harwin Dr, Ste 150A","addressLocality":"Houston","addressRegion":"TX","postalCode":"77036","addressCountry":"US"},"areaServed":["Houston TX","Cypress TX","Katy TX","Missouri City TX","Sienna Plantation TX","Sugar Land TX","Richmond TX"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial & Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Post-Construction Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Move-Out & Turnover Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential & Recurring Cleaning"}}]}
-</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you work with property managers and offices, not just homes?","acceptedAnswer":{"@type":"Answer","text":"Yes. A large part of what we do is commercial and property-management work \u2014 recurring move-out and turnover cleans, post-construction cleanup for builders, and office cleaning scheduled around your business hours. Call us and we'll build a plan around your volume."}},{"@type":"Question","name":"Are you insured and licensed?","acceptedAnswer":{"@type":"Answer","text":"Yes \u2014 Puretek Global Cleaning is a licensed, insured LLC. We're happy to provide documentation for commercial and property-management accounts."}},{"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"For homes and standard cleans, use the instant quote above for a real estimate in seconds. Commercial, post-construction, and multi-unit jobs are priced per project after a quick walkthrough or a few photos \u2014 no surprise charges."}},{"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"The greater Houston metro, including Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land, and Richmond. Not sure if we reach you? Just ask."}},{"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Get your instant quote, request it through the form, or just call or text 832-380-1738. You'll get a confirmed quote by text and email and can book on the spot."}}]}</script>
+{"@context":"https://schema.org","@type":"CleaningService","name":"Puretek Global Cleaning","image":"https://puretekglobal.net/assets/logo.png","url":"https://puretekglobal.net/","telephone":"+1-832-380-1738","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6666 Harwin Dr, Ste 150A","addressLocality":"Houston","addressRegion":"TX","postalCode":"77036","addressCountry":"US"},"areaServed":["Houston TX","Cypress TX","Katy TX","Missouri City TX","Sienna Plantation TX","Sugar Land TX","Richmond TX"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial & Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Janitorial Services"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"HOA & Property Management Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Medical Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Post-Construction Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Move-Out & Turnover Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential & Recurring Cleaning"}}]}
+</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you work with property managers, offices, and HOAs \u2014 not just homes?","acceptedAnswer":{"@type":"Answer","text":"Yes. A large part of what we do is commercial and property-management work \u2014 office and janitorial cleaning, medical suites, HOA common areas, recurring move-out and turnover cleans, and post-construction cleanup for builders. Call us and we'll build a plan around your volume."}},{"@type":"Question","name":"Are you insured and licensed?","acceptedAnswer":{"@type":"Answer","text":"Yes \u2014 Puretek Global Cleaning is a licensed, insured LLC. We're happy to provide documentation for commercial and property-management accounts."}},{"@type":"Question","name":"Do you guarantee your work?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our promise is simple: it's clean and you're satisfied, or we make it right. If anything isn't up to standard, tell us and we'll come back."}},{"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"For homes and standard cleans, use the instant quote above for a real estimate in seconds. Commercial, post-construction, and multi-unit jobs are priced per project after a quick walkthrough or a few photos \u2014 no surprise charges."}},{"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"The greater Houston metro, including Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land, and Richmond. Not sure if we reach you? Just ask."}},{"@type":"Question","name":"How do I book?","acceptedAnswer":{"@type":"Answer","text":"Get your instant quote, request it through the form, or just call or text 832-380-1738. You'll get a confirmed quote by text and email and can book on the spot."}}]}</script>
 </head>
 <body>
 <header>
@@ -240,7 +191,7 @@
   <div class="hero-rating"><span class="stars">★★★★★</span> 5.0 · 47 Google reviews</div>
   <h1>Commercial, Post-Construction &amp; <span class="accent">Move-Out Cleaning</span> Across Houston</h1>
   <div class="tagline">Real Cleaning. Real Results.</div>
-  <p class="sub">Puretek Global Cleaning keeps offices, new builds, and rental turnovers clean and presentation-ready for property managers, builders, and homeowners across the Houston metro — backed by 10+ years of hands-on cleaning experience, and the reliability that keeps clients with us for years. Insured &amp; licensed, bilingual, satisfaction guaranteed.</p>
+  <p class="sub">Puretek Global Cleaning keeps offices, new builds, and rental turnovers spotless for property managers, builders, and homeowners across the Houston metro — backed by 10+ years of hands-on cleaning experience, and the reliability that keeps clients with us for years. Insured &amp; licensed, bilingual, satisfaction guaranteed.</p>
   <div class="hero-ctas"><a href="#quote" class="btn btn-gold">See Your Price in 30 Seconds</a><a href="tel:+18323801738" class="btn btn-outline">Call or Text 832-380-1738</a></div>
 </div></section>
 
@@ -248,21 +199,21 @@
   <div>Insured &amp; Licensed</div><div>5.0★ · 47 Google Reviews</div><div>Commercial &amp; Residential</div><div>Bilingual Team</div><div>Satisfaction Guaranteed</div>
 </div></div>
 <section class="commercial" id="commercial"><div class="wrap">
-  <div class="section-head"><div class="eyebrow" style="color:var(--gold-light)">For Property Managers, Builders &amp; Offices</div><h2>Your reliable partner for high-volume, high-standard cleaning</h2><p>When you're turning units, handing over a new build, or keeping an office client-ready, you need a crew that shows up and hits the standard every time. That's what we do.</p></div>
+  <div class="section-head"><div class="eyebrow" style="color:var(--gold-light)">For Property Managers, Builders &amp; Offices</div><h2>Your reliable partner for high-volume, high-standard cleaning</h2><p>Offices, retail, medical suites, HOA common areas, janitorial contracts, move-out turnovers, and post-construction cleanups — we handle the recurring, high-standard work property managers, builders, and businesses count on, backed by a simple promise: it's clean and you're satisfied, or we make it right.</p></div>
   <div class="commercial-grid">
-    <div class="comm-card"><div class="kicker">Property Management</div><h3>Turnovers &amp; Move-Outs at Scale</h3><p>Recurring vacant-unit and move-out cleans for apartment communities and property managers — consistent quality across every unit, on your turn schedule.</p><a class="more" href="move-out.html">Move-out &amp; turnover cleaning →</a></div>
+    <div class="comm-card"><div class="kicker">Property Management &amp; HOA</div><h3>Turnovers &amp; Common Areas at Scale</h3><p>Recurring vacant-unit and move-out cleans for apartment communities, HOAs, and property managers — plus common-area upkeep — at a consistent standard across every unit, on your turn schedule.</p><a class="more" href="move-out.html">Move-out &amp; turnover cleaning →</a></div>
     <div class="comm-card"><div class="kicker">Builders &amp; GCs</div><h3>Post-Construction Cleanup</h3><p>Rough, final, and touch-up construction cleaning that clears dust, debris, and residue so your new build or remodel is ready to hand over.</p><a class="more" href="post-construction.html">Post-construction cleaning →</a></div>
-    <div class="comm-card"><div class="kicker">Offices &amp; Facilities</div><h3>Commercial &amp; Office Cleaning</h3><p>Flexible janitorial and detailed cleaning scheduled around your business hours, so your space stays client-ready without disrupting your day.</p><a class="more" href="commercial.html">Commercial cleaning →</a></div>
+    <div class="comm-card"><div class="kicker">Offices, Retail &amp; Medical</div><h3>Commercial &amp; Janitorial Cleaning</h3><p>Recurring janitorial and detailed cleaning for offices, retail, and medical suites — scheduled around your business hours, so your space stays client-ready without disrupting your day.</p><a class="more" href="commercial.html">Commercial cleaning →</a></div>
   </div>
   <div class="commercial-cta"><a href="#request" class="btn btn-gold">Request a Commercial Quote</a></div>
 </div></section>
 <section id="services"><div class="wrap">
   <div class="section-head"><div class="eyebrow">All Services</div><h2>Whatever the space, we've got it covered</h2><p>Commercial, new construction, rental turnovers, or a home that needs a reset — one team, one standard of clean.</p></div>
   <div class="services-grid">
-    <div class="service-card"><div class="icon">1</div><h3>Commercial &amp; Office</h3><p>Flexible scheduling around your business hours, so your space is always client-ready.</p><a class="more" href="commercial.html">Learn more →</a></div>
+    <div class="service-card"><div class="icon">1</div><h3>Commercial, Janitorial &amp; Office</h3><p>Offices, retail, medical, and HOA common areas — recurring janitorial scheduled around your hours.</p><a class="more" href="commercial.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">2</div><h3>Post-Construction</h3><p>Dust, debris, and residue cleared out so your newly built or renovated space is ready to hand over.</p><a class="more" href="post-construction.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">3</div><h3>Move-In / Move-Out</h3><p>A deep, top-to-bottom clean so you get your deposit back or hand over a place you're proud of.</p><a class="more" href="move-out.html">Learn more →</a></div>
-    <div class="service-card"><div class="icon">4</div><h3>Recurring Maintenance</h3><p>Weekly, biweekly, triweekly, or monthly cleans that keep your space consistently clean and presentation-ready.</p><a class="more" href="residential.html">Learn more →</a></div>
+    <div class="service-card"><div class="icon">4</div><h3>Recurring Maintenance</h3><p>Weekly, biweekly, triweekly, or monthly cleans that keep your space consistently spotless.</p><a class="more" href="residential.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">5</div><h3>Deep Cleanings</h3><p>The full reset — baseboards, inside appliances, every corner — when it's time to start fresh.</p><a class="more" href="residential.html">Learn more →</a></div>
     <div class="service-card"><div class="icon">6</div><h3>Airbnb Turnovers</h3><p>Fast, reliable turnovers between guests so every check-in gets a 5-star-clean impression.</p><a class="more" href="residential.html">Learn more →</a></div>
   </div>
@@ -330,54 +281,17 @@
     </div>
   </div></div>
 </section>
-<section class="faq-section" id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Questions we hear a lot</h2></div><div class="faq-list"><div class="faq-item"><h3>Do you work with property managers and offices, not just homes?</h3><p>Yes. A large part of what we do is commercial and property-management work — recurring move-out and turnover cleans, post-construction cleanup for builders, and office cleaning scheduled around your business hours. Call us and we&#x27;ll build a plan around your volume.</p></div><div class="faq-item"><h3>Are you insured and licensed?</h3><p>Yes — Puretek Global Cleaning is a licensed, insured LLC. We&#x27;re happy to provide documentation for commercial and property-management accounts.</p></div><div class="faq-item"><h3>How does pricing work?</h3><p>For homes and standard cleans, use the instant quote above for a real estimate in seconds. Commercial, post-construction, and multi-unit jobs are priced per project after a quick walkthrough or a few photos — no surprise charges.</p></div><div class="faq-item"><h3>What areas do you serve?</h3><p>The greater Houston metro, including Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land, and Richmond. Not sure if we reach you? Just ask.</p></div><div class="faq-item"><h3>How do I book?</h3><p>Get your instant quote, request it through the form, or just call or text 832-380-1738. You&#x27;ll get a confirmed quote by text and email and can book on the spot.</p></div></div></div></section>
+<section class="faq-section" id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Questions we hear a lot</h2></div><div class="faq-list"><div class="faq-item"><h3>Do you work with property managers, offices, and HOAs — not just homes?</h3><p>Yes. A large part of what we do is commercial and property-management work — office and janitorial cleaning, medical suites, HOA common areas, recurring move-out and turnover cleans, and post-construction cleanup for builders. Call us and we&#x27;ll build a plan around your volume.</p></div><div class="faq-item"><h3>Are you insured and licensed?</h3><p>Yes — Puretek Global Cleaning is a licensed, insured LLC. We&#x27;re happy to provide documentation for commercial and property-management accounts.</p></div><div class="faq-item"><h3>Do you guarantee your work?</h3><p>Yes. Our promise is simple: it&#x27;s clean and you&#x27;re satisfied, or we make it right. If anything isn&#x27;t up to standard, tell us and we&#x27;ll come back.</p></div><div class="faq-item"><h3>How does pricing work?</h3><p>For homes and standard cleans, use the instant quote above for a real estimate in seconds. Commercial, post-construction, and multi-unit jobs are priced per project after a quick walkthrough or a few photos — no surprise charges.</p></div><div class="faq-item"><h3>What areas do you serve?</h3><p>The greater Houston metro, including Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land, and Richmond. Not sure if we reach you? Just ask.</p></div><div class="faq-item"><h3>How do I book?</h3><p>Get your instant quote, request it through the form, or just call or text 832-380-1738. You&#x27;ll get a confirmed quote by text and email and can book on the spot.</p></div></div></div></section>
 
 <footer><div class="wrap">
   <img src="assets/logo.png" alt="Puretek Global Cleaning logo">
-  <div class="foot-name">Puretek Global Solutions LLC</div>
+  <div class="foot-name">Puretek Global LLC</div>
   <div class="foot-line"><a href="tel:+18323801738">832-380-1738</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
   <div class="foot-line">Insured &amp; Licensed · Serving Houston, Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land &amp; Richmond</div>
   <div class="foot-links"><a href="commercial.html">Commercial</a><a href="post-construction.html">Post-Construction</a><a href="move-out.html">Move-Out</a><a href="residential.html">Residential</a><a href="index.html#area">Service Area</a></div>
-  <div class="foot-copy">&copy; 2026 Puretek Global Solutions LLC. All rights reserved.</div>
+  <div class="foot-copy">&copy; 2026 Puretek Global LLC. All rights reserved.</div>
 </div></footer>
 <div class="mobile-bar"><a href="tel:+18323801738" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
-
-<script>
-(function(){
-  var L={weekly:'Weekly Maintenance',biweekly:'Biweekly Maintenance',triweekly:'Triweekly Maintenance',monthly:'Monthly Maintenance',initial:'Initial / Move-In Clean',moveout:'Move-Out Clean',postconstruction:'Post-Construction Clean'};
-  function g(id){return document.getElementById(id)||{};}
-  function summary(){
-    var sq=g('sqft').value||'', ct=g('cleanType').value||'';
-    var tot=(g('quoteTotal').textContent||'').trim(), lab=(g('quoteLabel').textContent||'').trim(), bd=(g('quoteBreakdown').textContent||'').trim();
-    if(!sq) return '';
-    var s='--- MY INSTANT QUOTE ---\n';
-    s+='Service: '+(L[ct]||ct)+'\n';
-    s+='Square footage: '+sq+' sq ft\n';
-    if(lab) s+=lab+'\n';
-    if(tot) s+='Estimate: '+tot+'\n';
-    if(bd) s+=bd+'\n';
-    return s;
-  }
-  function notice(html){
-    var el=document.getElementById('ptg-quote-note');
-    if(!el){
-      el=document.createElement('div'); el.id='ptg-quote-note';
-      el.style.cssText='max-width:760px;margin:18px auto 0;padding:14px 16px;border:1.5px solid #C9A227;background:#FFFDF7;border-radius:12px;font-size:14.5px;line-height:1.55;color:#3A3934';
-      var a=document.getElementById('request');
-      if(a&&a.parentNode) a.parentNode.insertBefore(el,a.nextSibling); else return;
-    }
-    el.innerHTML=html;
-  }
-  document.addEventListener('click',function(e){
-    var t=e.target, a=t&&t.closest?t.closest('a[href="#request"]'):null;
-    if(!a) return;
-    var s=summary(); if(!s) return;
-    try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(s); }catch(x){}
-    notice('<b>Your estimate was copied.</b> Paste it into the job details box below so we have your numbers &mdash; or just tell us in your own words.<br><span style="color:#6B6B66;font-size:13px">'+s.replace(/\n/g,'<br>')+'</span>');
-    try{ if(typeof gtag==='function'){ gtag('event','quote_requested',{service_type:g('cleanType').value||'',square_footage:Number(g('sqft').value)||0}); } }catch(x){}
-  },false);
-})();
-</script>
 </body></html>
 <script>
   // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Floors: $150 all services, $250 move-out.

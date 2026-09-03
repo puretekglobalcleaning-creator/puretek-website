@@ -1,55 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16655749332"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-16655749332');
-</script>
-<!-- Puretek conversion tracking — added 2026-08-22. Fires click-to-call and Jobber form-submit conversions. -->
-<script>
-(function () {
-  var CALL = 'AW-16655749332/prJ5CJuyieYcENShioY-';
-  var FORM = 'AW-16655749332/ra9uCM6dyJUbENShioY-';
-  var fired = {};
-
-  function fire(label) {
-    if (fired[label]) return;
-    fired[label] = true;
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': label,
-        'value': 1.0,
-        'currency': 'USD'
-      });
-    }
-  }
-
-  /* 1. Click-to-call and click-to-text, anywhere on the page.
-        We never block the default action — the dialer opens immediately. */
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (t && t.nodeType === 3) { t = t.parentNode; }
-    if (!t || !t.closest) { return; }
-    if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL); }
-  }, true);
-
-  /* 2. Jobber embedded work-request form submission.
-        The form lives in a cross-origin iframe, so we listen for its postMessage.
-        Resize/height chatter is ignored; only an explicit submit/success counts. */
-  window.addEventListener('message', function (e) {
-    if (!e.origin || e.origin.indexOf('getjobber.com') === -1) { return; }
-    var s;
-    try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch (err) { return; }
-    if (!s) { return; }
-    if (/height|resize|scroll|iframe/i.test(s)) { return; }
-    if (/submit|success|thank|complete/i.test(s)) { fire(FORM); }
-  }, false);
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Post-Construction Cleaning in Houston | Builders &amp; GCs | Puretek Global Cleaning</title>
@@ -220,7 +171,7 @@
   }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CleaningService","name":"Puretek Global Cleaning","image":"https://puretekglobal.net/assets/logo.png","url":"https://puretekglobal.net/","telephone":"+1-832-380-1738","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6666 Harwin Dr, Ste 150A","addressLocality":"Houston","addressRegion":"TX","postalCode":"77036","addressCountry":"US"},"areaServed":["Houston TX","Cypress TX","Katy TX","Missouri City TX","Sienna Plantation TX","Sugar Land TX","Richmond TX"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial & Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Post-Construction Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Move-Out & Turnover Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential & Recurring Cleaning"}}]}
+{"@context":"https://schema.org","@type":"CleaningService","name":"Puretek Global Cleaning","image":"https://puretekglobal.net/assets/logo.png","url":"https://puretekglobal.net/","telephone":"+1-832-380-1738","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6666 Harwin Dr, Ste 150A","addressLocality":"Houston","addressRegion":"TX","postalCode":"77036","addressCountry":"US"},"areaServed":["Houston TX","Cypress TX","Katy TX","Missouri City TX","Sienna Plantation TX","Sugar Land TX","Richmond TX"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"47"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Commercial & Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Janitorial Services"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"HOA & Property Management Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Medical Office Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Post-Construction Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Move-Out & Turnover Cleaning"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential & Recurring Cleaning"}}]}
 </script>
 </head>
 <body>
@@ -289,11 +240,11 @@
 </section>
 <footer><div class="wrap">
   <img src="assets/logo.png" alt="Puretek Global Cleaning logo">
-  <div class="foot-name">Puretek Global Solutions LLC</div>
+  <div class="foot-name">Puretek Global LLC</div>
   <div class="foot-line"><a href="tel:+18323801738">832-380-1738</a> &nbsp;·&nbsp; <a href="https://puretekglobal.net">puretekglobal.net</a></div>
   <div class="foot-line">Insured &amp; Licensed · Serving Houston, Cypress, Katy, Missouri City, Sienna Plantation, Sugar Land &amp; Richmond</div>
   <div class="foot-links"><a href="commercial.html">Commercial</a><a href="post-construction.html">Post-Construction</a><a href="move-out.html">Move-Out</a><a href="residential.html">Residential</a><a href="index.html#area">Service Area</a></div>
-  <div class="foot-copy">&copy; 2026 Puretek Global Solutions LLC. All rights reserved.</div>
+  <div class="foot-copy">&copy; 2026 Puretek Global LLC. All rights reserved.</div>
 </div></footer>
 <div class="mobile-bar"><a href="tel:+18323801738" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
 </body></html>
