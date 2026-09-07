@@ -35,13 +35,46 @@
     if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL); }
   }, true);
 
-  window.addEventListener('message', function (e) {
-    if (!e.origin || e.origin.indexOf('getjobber.com') === -1) { return; }
-    var s;
-    try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch (err) { return; }
-    if (!s) { return; }
-    if (/height|resize|scroll|iframe/i.test(s)) { return; }
-    if (/submit|success|thank|complete/i.test(s)) { fire(FORM); }
+  // Capture gclid on arrival so phone-closed jobs can be imported as offline
+  // conversions later. Harmless if absent.
+  try {
+    var _g = new URLSearchParams(window.location.search).get('gclid');
+    if (_g) { localStorage.setItem('ptg_gclid', _g); }
+  } catch (err) {}
+
+  // Form submit. This page used to embed a Jobber form and listened for its postMessage;
+  // it now posts to Apps Script directly, so that listener could never fire and no form
+  // conversion was ever recorded. Submit in the background, then send the visitor to
+  // /thank-you.html, which fires the form conversion on load.
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || !form.classList || !form.classList.contains('ptg-form')) { return; }
+    e.preventDefault();
+
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
+
+    try {
+      var g = localStorage.getItem('ptg_gclid');
+      if (g && !form.querySelector('input[name="gclid"]')) {
+        var h = document.createElement('input');
+        h.type = 'hidden'; h.name = 'gclid'; h.value = g;
+        form.appendChild(h);
+      }
+    } catch (err) {}
+
+    var done = false;
+    function go() { if (done) { return; } done = true; window.location.href = '/thank-you.html'; }
+    setTimeout(go, 2500); // failsafe: never strand the visitor
+
+    try {
+      fetch(form.action, {
+        method: 'POST',
+        mode: 'no-cors',
+        keepalive: true,
+        body: new URLSearchParams(new FormData(form))
+      }).then(go).catch(go);
+    } catch (err) { form.submit(); }
   }, false);
 })();
 </script>
