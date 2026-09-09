@@ -229,6 +229,15 @@
     <h3>Ready to get your confirmed quote?</h3>
     <p>Fill out the short form below with your contact info and job details — you'll get a confirmed quote by text and email, and can book your cleaning right on the spot.</p>
     
+            <style>
+      /* Jobber embed hardening - 2026-09-09.
+         Jobber's auto-resize handshake is unreliable and had collapsed this iframe to 40px,
+         silently hiding the entire lead form on every page. min-height guarantees a usable
+         form, and still lets Jobber's own resize grow it further if the handshake succeeds.
+         DO NOT REMOVE without re-testing the rendered iframe height on a live page. */
+      #b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814 iframe{min-height:1350px;width:100%;border:0}
+      @media (max-width:768px){#b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814 iframe{min-height:1750px}}
+      </style>
       <div id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814"></div>
       <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
       <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814" form_url="https://clienthub.getjobber.com/client_hubs/b8202474-ba1c-4235-9d13-b55bb5b139ba/public/work_request/embedded_work_request_form?form_id=1654814"></script>
