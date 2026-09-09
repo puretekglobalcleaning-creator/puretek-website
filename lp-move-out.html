@@ -313,45 +313,19 @@
 .ptg-form button:hover{filter:brightness(1.05)}
 .ptg-form .fine{font-size:12.5px;color:var(--gray);text-align:center;margin-top:-2px}
 </style>
-<form class="ptg-form" method="POST" action="https://script.google.com/macros/s/AKfycbwlRwTJZKdsO71x7ywF3wzsY27Rm-bEMOEzfhNY_e4iln0VU4RzW4247U4LagdotXlTvQ/exec">
-  <input type="hidden" name="service" value="Move-Out Cleaning">
-  <input type="hidden" name="source" value="lp-move-out.html">
-  <div class="row">
-    <div><label for="mn">Name <span class="req">*</span></label>
-      <input id="mn" name="name" type="text" required autocomplete="name"></div>
-    <div><label for="mp">Phone <span class="req">*</span></label>
-      <input id="mp" name="phone" type="tel" required autocomplete="tel"></div>
-  </div>
-  <div class="row">
-    <div><label for="me">Email</label>
-      <input id="me" name="email" type="email" autocomplete="email"></div>
-    <div><label for="ms">Approx. square footage</label>
-      <input id="ms" name="sqft" type="text" placeholder="e.g. 1,800"></div>
-  </div>
-  <div><label for="ma">Property address</label>
-    <input id="ma" name="address" type="text" placeholder="Street, city"></div>
-  <div><label for="md">What do you need?</label>
-    <textarea id="md" name="details" placeholder="Move-out date? Furnished or empty? Carpets, appliances, garage? Anything the landlord flagged?"></textarea></div>
-  <button type="submit">Get My Quote</button>
-  <div class="fine">We answer fast. Need it done this week? Call or text 832-380-1738.</div>
-</form>
-<script>
-(function(){
-  var f=document.querySelector('form.ptg-form'); if(!f) return;
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var b=f.querySelector('button[type=submit]');
-    if(b){b.disabled=true;b.textContent='Sending...';}
-    var done=false;
-    var go=function(){ if(done) return; done=true; window.location.href='/thank-you.html'; };
-    try{
-      fetch(f.action,{method:'POST',mode:'no-cors',body:new FormData(f)}).then(go).catch(go);
-    }catch(e){ go(); }
-    setTimeout(go,4000);
-  });
-})();
-</script>
-    <div class="request-ctas">
+      <style>
+      /* Jobber embed hardening - 2026-09-09.
+         Jobber's auto-resize handshake is unreliable and had collapsed this iframe to 40px,
+         silently hiding the entire lead form on every page. min-height guarantees a usable
+         form, and still lets Jobber's own resize grow it further if the handshake succeeds.
+         DO NOT REMOVE without re-testing the rendered iframe height on a live page. */
+      #b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814 iframe{min-height:1350px;width:100%;border:0}
+      @media (max-width:768px){#b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814 iframe{min-height:1750px}}
+      </style>
+      <div id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814"></div>
+      <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+      <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="b8202474-ba1c-4235-9d13-b55bb5b139ba-1654814" form_url="https://clienthub.getjobber.com/client_hubs/b8202474-ba1c-4235-9d13-b55bb5b139ba/public/work_request/embedded_work_request_form?form_id=1654814"></script>
+<div class="request-ctas">
       <a href="tel:+18323801738" class="btn btn-outline dark">Call 832-380-1738</a>
       <a href="sms:+18323801738" class="btn btn-outline dark">Text Us</a>
     </div>
