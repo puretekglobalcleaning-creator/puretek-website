@@ -9,14 +9,100 @@
   gtag('js', new Date());
   gtag('config', 'AW-16655749332');
 </script>
-<!-- Puretek conversion tracking — added 2026-08-22. This page is the Jobber request-form redirect target; reaching it IS the lead-form conversion. -->
+<!-- Puretek conversion tracking v2 (2026-09-10). Click-to-call + Jobber embed submit. -->
 <script>
-  gtag('event', 'conversion', {
-    'send_to': 'AW-16655749332/ra9uCM6dyJUbENShioY-',
-    'value': 1.0,
-    'currency': 'USD'
-  });
+(function () {
+  var CALL = 'AW-16655749332/prJ5CJuyieYcENShioY-';
+  var FORM = 'AW-16655749332/ra9uCM6dyJUbENShioY-';
+  var fired = {};
+
+  function fire(label, name) {
+    if (fired[label]) return;
+    fired[label] = true;
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': label, 'value': 1.0, 'currency': 'USD' });
+      gtag('event', name, { 'event_category': 'lead' });
+    }
+  }
+
+  // --- Click to call / text -------------------------------------------------
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (t && t.nodeType === 3) { t = t.parentNode; }
+    if (!t || !t.closest) { return; }
+    if (t.closest('a[href^="tel:"], a[href^="sms:"]')) { fire(CALL, 'contact_call'); }
+  }, true);
+
+  // --- Capture gclid for offline import ------------------------------------
+  try {
+    var _g = new URLSearchParams(window.location.search).get('gclid');
+    if (_g) { localStorage.setItem('ptg_gclid', _g); }
+  } catch (err) {}
+
+  // --- Jobber embedded form -------------------------------------------------
+  // The form is a cross-origin iframe (clienthub.getjobber.com) and emits no
+  // postMessage, so its submit cannot be read directly. Two safe detectors:
+  //   1. iframe re-navigation  -> a load event after the first one means the
+  //      form posted and moved to its confirmation screen.
+  //   2. postMessage           -> in case Jobber ever starts emitting one.
+  // Neither can produce a false positive on a plain page view.
+  var START = Date.now();
+
+  function watchFrame(fr) {
+    if (!fr || fr.__ptgWatched) { return; }
+    fr.__ptgWatched = true;
+    var loads = 0;
+    fr.addEventListener('load', function () {
+      loads++;
+      // Ignore the initial render and anything in the first 5s of page life.
+      if (loads > 1 && (Date.now() - START) > 5000) { fire(FORM, 'form_submit'); }
+    });
+  }
+
+  function scan() {
+    var frames = document.querySelectorAll('iframe[src*="getjobber"], iframe[src*="clienthub"]');
+    for (var i = 0; i < frames.length; i++) { watchFrame(frames[i]); }
+  }
+
+  if (document.readyState !== 'loading') { scan(); }
+  else { document.addEventListener('DOMContentLoaded', scan); }
+  // Jobber injects its iframe late, so keep looking for a while.
+  var tries = 0;
+  var iv = setInterval(function () { scan(); if (++tries > 60) { clearInterval(iv); } }, 1000);
+
+  window.addEventListener('message', function (e) {
+    if (!/getjobber|clienthub/.test(e.origin || '')) { return; }
+    var d = e.data;
+    var s = typeof d === 'string' ? d : (function(){ try { return JSON.stringify(d); } catch (x) { return ''; } })();
+    if (/submit|success|complete|thank/i.test(s)) { fire(FORM, 'form_submit'); }
+  }, false);
+
+  // --- Native fallback form (kept for thank-you.html flow) -------------------
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || !form.classList || !form.classList.contains('ptg-form')) { return; }
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    try {
+      var g = localStorage.getItem('ptg_gclid');
+      if (g && !form.querySelector('input[name="gclid"]')) {
+        var h = document.createElement('input');
+        h.type = 'hidden'; h.name = 'gclid'; h.value = g;
+        form.appendChild(h);
+      }
+    } catch (err) {}
+    var done = false;
+    function go() { if (done) { return; } done = true; window.location.href = '/thank-you.html'; }
+    setTimeout(go, 2500);
+    try {
+      fetch(form.action, { method: 'POST', mode: 'no-cors', keepalive: true,
+        body: new URLSearchParams(new FormData(form)) }).then(go).catch(go);
+    } catch (err) { form.submit(); }
+  }, false);
+})();
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Received | Puretek Global Cleaning</title>
@@ -54,6 +140,15 @@ footer{padding:26px 0;border-top:1px solid rgba(255,253,247,.1);text-align:cente
 footer a{color:var(--gold-light);text-decoration:none}
 @media(max-width:560px){h1{font-size:29px}main{padding:38px 0}.ctas{flex-direction:column}.btn{text-align:center}}
 </style>
+<!-- Reaching this page IS the lead-form conversion (native-form fallback path). -->
+<script>
+  window.addEventListener('load', function () {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-16655749332/ra9uCM6dyJUbENShioY-', 'value': 1.0, 'currency': 'USD' });
+      gtag('event', 'form_submit', { 'event_category': 'lead' });
+    }
+  });
+</script>
 </head>
 <body>
 
