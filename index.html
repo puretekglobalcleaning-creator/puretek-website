@@ -332,7 +332,7 @@
         <option value="biweekly" selected>Biweekly Maintenance</option>
         <option value="triweekly">Triweekly Maintenance</option>
         <option value="monthly">Monthly Maintenance</option>
-        <option value="initial">Initial / Move-In Clean</option>
+        <option value="initial">Initial / Move-In / Deep Clean</option>
         <option value="moveout">Move-Out Clean</option>
         <option value="postconstruction">Post-Construction Clean</option>
       </select>
@@ -405,17 +405,18 @@
 <div class="mobile-bar"><a href="tel:+18323801738" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
 </body></html>
 <script>
-  // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Floors: $150 all services, $250 move-out.
+  // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Updated 2026-10-06: general floor $175; Initial/Move-In/Deep Clean merged at $0.175; move-out floor tiered $250 under 1300 sqft / $350 at 1300+.
   const TYPES={
-    weekly:{label:'Weekly Maintenance',rate:0.08,min:150,recurring:true},
-    biweekly:{label:'Biweekly Maintenance',rate:0.09,min:150,recurring:true},
-    triweekly:{label:'Triweekly Maintenance',rate:0.10,min:150,recurring:true},
-    monthly:{label:'Monthly Maintenance',rate:0.11,min:150,recurring:true},
-    initial:{label:'Initial / Move-In Clean',rate:0.15,min:150},
-    moveout:{label:'Move-Out Clean',rate:0.20,min:250},
-    postconstruction:{label:'Post-Construction Clean',rate:0.24,min:150}
+    weekly:{label:'Weekly Maintenance',rate:0.08,min:175,recurring:true},
+    biweekly:{label:'Biweekly Maintenance',rate:0.09,min:175,recurring:true},
+    triweekly:{label:'Triweekly Maintenance',rate:0.10,min:175,recurring:true},
+    monthly:{label:'Monthly Maintenance',rate:0.11,min:175,recurring:true},
+    initial:{label:'Initial / Move-In / Deep Clean',rate:0.175,min:175},
+    moveout:{label:'Move-Out Clean',rate:0.20,min:function(sqft){return sqft>=1300?350:250;}},
+    postconstruction:{label:'Post-Construction Clean',rate:0.24,min:175}
   };
-  const INITIAL_RATE=0.15, INITIAL_MIN=150;
+  const INITIAL_RATE=0.175, INITIAL_MIN=175;
+  function minFor(t,sqft){return (typeof t.min==='function')?t.min(sqft):t.min;}
   function fmt(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:0});}
   function roundUpToFive(n){return Math.ceil(n/5)*5;}
   function priceFor(sqft,rate,minimum){return roundUpToFive(Math.max(sqft*rate,minimum));}
@@ -425,14 +426,14 @@
     const recurringLine=document.getElementById('recurringLine');
     if(t.recurring){
       const firstClean=priceFor(sqft,INITIAL_RATE,INITIAL_MIN);
-      const recurringPrice=priceFor(sqft,t.rate,t.min);
+      const recurringPrice=priceFor(sqft,t.rate,minFor(t,sqft));
       document.getElementById('quoteLabel').textContent='First Clean (Initial Deep Clean)';
       document.getElementById('quoteTotal').textContent=fmt(firstClean);
       document.getElementById('recurringTotal').textContent=fmt(recurringPrice)+' / visit';
       recurringLine.style.display='';
       document.getElementById('quoteBreakdown').innerHTML=`<div><span>${t.label} (${sqft} sq ft)</span></div>`;
     } else {
-      const total=priceFor(sqft,t.rate,t.min);
+      const total=priceFor(sqft,t.rate,minFor(t,sqft));
       document.getElementById('quoteLabel').textContent='Your Instant Estimate';
       document.getElementById('quoteTotal').textContent=fmt(total);
       recurringLine.style.display='none';
