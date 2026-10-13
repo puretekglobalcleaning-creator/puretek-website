@@ -332,6 +332,7 @@
         <option value="biweekly" selected>Biweekly Maintenance</option>
         <option value="triweekly">Triweekly Maintenance</option>
         <option value="monthly">Monthly Maintenance</option>
+        <option value="standard">Standard Clean (one-time)</option>
         <option value="initial">Initial Deep Clean</option>
         <option value="moveout">Move-In / Move-Out Clean</option>
         <option value="postconstruction">Post-Construction Clean</option>
@@ -407,12 +408,13 @@
 <div class="mobile-bar"><a href="tel:+13466154646" class="call">Call</a><a href="index.html#request" class="quote">Get a Quote</a></div>
 </body></html>
 <script>
-  // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Updated 2026-10-13: Initial Deep Clean $0.20; Move-In / Move-Out $0.22 (floor $250 under 1300 sqft / $350 at 1300+); residential Post-Construction $0.25; general floor $175.
+  // Rates mirror Puretek_Cleaning_Pricing_Model.xlsx (rate per sq ft). Updated 2026-10-13: Standard Clean $0.13; Initial Deep Clean $0.20; Move-In / Move-Out $0.22 (floor $250 under 1300 sqft / $350 at 1300+); residential Post-Construction $0.25; general floor $175.
   const TYPES={
     weekly:{label:'Weekly Maintenance',rate:0.08,min:175,recurring:true},
     biweekly:{label:'Biweekly Maintenance',rate:0.09,min:175,recurring:true},
     triweekly:{label:'Triweekly Maintenance',rate:0.10,min:175,recurring:true},
     monthly:{label:'Monthly Maintenance',rate:0.11,min:175,recurring:true},
+    standard:{label:'Standard Clean',rate:0.13,min:175},
     initial:{label:'Initial Deep Clean',rate:0.20,min:175},
     moveout:{label:'Move-In / Move-Out Clean',rate:0.22,min:function(sqft){return sqft>=1300?350:250;}},
     postconstruction:{label:'Post-Construction Clean',rate:0.25,min:175}
