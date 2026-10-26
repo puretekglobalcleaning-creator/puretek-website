@@ -423,7 +423,7 @@
   function minFor(t,sqft){return (typeof t.min==='function')?t.min(sqft):t.min;}
   function fmt(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:0});}
   function roundUpToFive(n){return Math.ceil(n/5)*5;}
-  function priceFor(sqft,rate,minimum){return roundUpToFive(Math.max(sqft*rate,minimum));}
+  function priceFor(sqft,rate,minimum){return roundUpToFive(Math.round(Math.max(sqft*rate,minimum)*100)/100);}
   function calculate(){
     const sqft=parseFloat(document.getElementById('sqft').value)||0;
     const t=TYPES[document.getElementById('cleanType').value];
